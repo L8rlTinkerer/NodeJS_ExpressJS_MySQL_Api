@@ -8,8 +8,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+    const enrolment = {
+        courseId: req.body.courseId
+    };
     res.status(200).json({
-        message: 'Handling POST requests to /enrolments'
+        message: 'Enrolment was created',
+        enrolment: enrolment
     });
 });
 
