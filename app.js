@@ -2,15 +2,19 @@
 const express = require('express'); 
 const app = express(); // spin up an express application
 const morgan = require('morgan'); 
+const bodyParser = require('body-parser');
 
 // import routes
 const courseRoutes = require('./api/routes/courses');
 const enrolmentRoutes = require('./api/routes/enrolments');
 
-// console logging middleware
-app.use(morgan('dev'));
+// activate general middleware
+app.use(morgan('dev')); // console logging
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-// requests middleware
+
+// activate requests/routes middleware
 app.use('/courses', courseRoutes);
 app.use('/enrolments', enrolmentRoutes);
 
